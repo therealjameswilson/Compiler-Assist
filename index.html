@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Compiler Assist</title>
+    <meta
+      name="description"
+      content="Compiler Assist is the main directory for FRUS Assist compiler workspaces and research pages."
+    />
+    <meta property="og:title" content="Compiler Assist" />
+    <meta
+      property="og:description"
+      content="A central directory for FRUS Assist pages, compiler workspaces, and source-research support."
+    />
+    <meta property="og:image" content="assets/compiler-assist-hero.png" />
+    <style>
+      :root {
+        --bg: #f4f1ea;
+        --surface: #fffdf8;
+        --surface-strong: #ffffff;
+        --ink: #1d2527;
+        --muted: #657074;
+        --line: #d9d2c4;
+        --teal: #1c6b68;
+        --teal-dark: #104846;
+        --red: #9f342e;
+        --gold: #b27b2d;
+        --blue: #315c90;
+        --shadow: 0 18px 48px rgba(27, 31, 34, 0.12);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        overflow-x: hidden;
+        background: var(--bg);
+        color: var(--ink);
+        font-family:
+          Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          sans-serif;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        border-bottom: 1px solid rgba(29, 37, 39, 0.08);
+        background: rgba(244, 241, 234, 0.92);
+        backdrop-filter: blur(14px);
+      }
+
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+        max-width: 1180px;
+        margin: 0 auto;
+        padding: 14px 22px;
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        text-decoration: none;
+        font-weight: 800;
+        letter-spacing: 0;
+      }
+
+      .brand-mark {
+        display: grid;
+        place-items: center;
+        width: 34px;
+        height: 34px;
+        border-radius: 7px;
+        background: var(--teal);
+        color: #fff;
+        font-size: 0.82rem;
+        font-weight: 900;
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        color: var(--muted);
+        font-size: 0.92rem;
+        font-weight: 700;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+      }
+
+      .nav-links a:hover {
+        color: var(--teal-dark);
+      }
+
+      main {
+        min-height: 100vh;
+      }
+
+      .hero {
+        position: relative;
+        min-height: min(620px, calc(100vh - 64px));
+        overflow: hidden;
+        background-image:
+          linear-gradient(90deg, rgba(10, 17, 18, 0.9) 0%, rgba(10, 17, 18, 0.72) 36%, rgba(10, 17, 18, 0.2) 66%),
+          url("assets/compiler-assist-hero.png");
+        background-position: center;
+        background-size: cover;
+        color: #fff;
+      }
+
+      .hero-inner {
+        display: grid;
+        align-content: end;
+        max-width: 1180px;
+        min-height: min(620px, calc(100vh - 64px));
+        margin: 0 auto;
+        padding: 88px 22px 54px;
+      }
+
+      .kicker {
+        margin: 0 0 14px;
+        color: #f4c871;
+        font-size: 0.78rem;
+        font-weight: 900;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
+
+      h1 {
+        min-width: 0;
+        max-width: 780px;
+        margin: 0;
+        font-size: clamp(3.2rem, 9vw, 7.3rem);
+        line-height: 0.88;
+        letter-spacing: 0;
+      }
+
+      .hero-copy {
+        min-width: 0;
+        max-width: 660px;
+        margin: 22px 0 0;
+        color: rgba(255, 255, 255, 0.84);
+        font-size: clamp(1.05rem, 1.8vw, 1.34rem);
+        line-height: 1.55;
+      }
+
+      .stats {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 28px;
+      }
+
+      .stat {
+        display: inline-flex;
+        align-items: baseline;
+        gap: 9px;
+        min-height: 42px;
+        border: 1px solid rgba(255, 255, 255, 0.24);
+        border-radius: 8px;
+        padding: 10px 12px;
+        background: rgba(255, 255, 255, 0.09);
+      }
+
+      .stat strong {
+        font-size: 1.08rem;
+      }
+
+      .stat span {
+        color: rgba(255, 255, 255, 0.76);
+        font-size: 0.88rem;
+        font-weight: 700;
+      }
+
+      .directory {
+        max-width: 1180px;
+        margin: 0 auto;
+        padding: 34px 22px 72px;
+      }
+
+      .toolbar {
+        display: grid;
+        grid-template-columns: minmax(240px, 1fr) auto;
+        align-items: center;
+        gap: 16px;
+        margin-bottom: 22px;
+      }
+
+      .search {
+        position: relative;
+      }
+
+      .search input {
+        width: 100%;
+        min-height: 48px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 0 16px 0 44px;
+        background: var(--surface-strong);
+        color: var(--ink);
+        font: inherit;
+        font-weight: 700;
+        outline: none;
+        box-shadow: 0 8px 22px rgba(27, 31, 34, 0.06);
+      }
+
+      .search input:focus {
+        border-color: var(--teal);
+        box-shadow: 0 0 0 4px rgba(28, 107, 104, 0.14);
+      }
+
+      .search svg {
+        position: absolute;
+        left: 15px;
+        top: 50%;
+        width: 18px;
+        height: 18px;
+        transform: translateY(-50%);
+        color: var(--muted);
+      }
+
+      .filters {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        gap: 8px;
+      }
+
+      .filter-button {
+        min-height: 40px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 0 12px;
+        background: var(--surface-strong);
+        color: var(--muted);
+        font: inherit;
+        font-size: 0.9rem;
+        font-weight: 800;
+        cursor: pointer;
+      }
+
+      .filter-button[aria-pressed="true"] {
+        border-color: var(--teal);
+        background: var(--teal);
+        color: #fff;
+      }
+
+      .section-heading {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: 20px;
+        margin: 32px 0 14px;
+      }
+
+      .section-heading h2 {
+        margin: 0;
+        font-size: clamp(1.35rem, 2.4vw, 2rem);
+        letter-spacing: 0;
+      }
+
+      .section-heading p {
+        margin: 0;
+        color: var(--muted);
+        font-weight: 700;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      .assist-card {
+        display: flex;
+        min-height: 232px;
+        flex-direction: column;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--surface);
+        box-shadow: 0 12px 28px rgba(27, 31, 34, 0.07);
+      }
+
+      .assist-card[hidden] {
+        display: none;
+      }
+
+      .card-stripe {
+        height: 6px;
+        border-radius: 8px 8px 0 0;
+        background: var(--teal);
+      }
+
+      .assist-card[data-era="1981-1988"] .card-stripe {
+        background: var(--blue);
+      }
+
+      .assist-card[data-era="1989-1992"] .card-stripe {
+        background: var(--teal);
+      }
+
+      .assist-card[data-era="1993-2000"] .card-stripe {
+        background: var(--red);
+      }
+
+      .assist-card[data-era="2001"] .card-stripe,
+      .assist-card[data-era="support"] .card-stripe {
+        background: var(--gold);
+      }
+
+      .card-body {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        gap: 14px;
+        padding: 18px;
+      }
+
+      .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+
+      .tag {
+        display: inline-flex;
+        align-items: center;
+        min-height: 26px;
+        border-radius: 7px;
+        padding: 0 8px;
+        background: #e9e4d9;
+        color: #4f575a;
+        font-size: 0.72rem;
+        font-weight: 900;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+
+      .tag.live {
+        background: rgba(28, 107, 104, 0.12);
+        color: var(--teal-dark);
+      }
+
+      .tag.mirror {
+        background: rgba(159, 52, 46, 0.12);
+        color: #812a25;
+      }
+
+      .assist-card h3 {
+        margin: 0;
+        color: var(--ink);
+        font-size: 1.1rem;
+        line-height: 1.22;
+        letter-spacing: 0;
+      }
+
+      .assist-card p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 0.95rem;
+        line-height: 1.5;
+      }
+
+      .card-footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        margin-top: auto;
+      }
+
+      .open-link {
+        display: inline-flex;
+        align-items: center;
+        min-height: 38px;
+        border-radius: 8px;
+        padding: 0 12px;
+        background: var(--ink);
+        color: #fff;
+        text-decoration: none;
+        font-size: 0.9rem;
+        font-weight: 900;
+      }
+
+      .open-link:hover {
+        background: var(--teal-dark);
+      }
+
+      .repo-link {
+        color: var(--muted);
+        font-size: 0.86rem;
+        font-weight: 800;
+        text-decoration: none;
+      }
+
+      .repo-link:hover {
+        color: var(--teal-dark);
+      }
+
+      .empty {
+        display: none;
+        border: 1px dashed var(--line);
+        border-radius: 8px;
+        padding: 28px;
+        background: rgba(255, 255, 255, 0.48);
+        color: var(--muted);
+        font-weight: 800;
+        text-align: center;
+      }
+
+      .empty.visible {
+        display: block;
+      }
+
+      footer {
+        border-top: 1px solid var(--line);
+        background: #e9e4d9;
+      }
+
+      .footer-inner {
+        max-width: 1180px;
+        margin: 0 auto;
+        padding: 22px;
+        color: #4f575a;
+        font-size: 0.92rem;
+        font-weight: 700;
+      }
+
+      @media (max-width: 920px) {
+        .toolbar {
+          grid-template-columns: 1fr;
+        }
+
+        .filters {
+          justify-content: flex-start;
+        }
+
+        .grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      @media (max-width: 640px) {
+        .nav {
+          align-items: flex-start;
+          flex-direction: column;
+          gap: 10px;
+        }
+
+        .nav-links {
+          width: 100%;
+          overflow-x: auto;
+          padding-bottom: 2px;
+        }
+
+        .hero,
+        .hero-inner {
+          min-height: 560px;
+        }
+
+        .hero-inner,
+        .directory,
+        .toolbar,
+        .filters {
+          width: 100%;
+          min-width: 0;
+          max-width: 100%;
+        }
+
+        .hero {
+          background-position: center right 38%;
+        }
+
+        h1 {
+          max-width: 7ch;
+          font-size: clamp(3rem, 15vw, 4rem);
+        }
+
+        .hero-copy {
+          width: 346px;
+          max-width: calc(100vw - 44px);
+          font-size: 1rem;
+        }
+
+        .filters {
+          display: grid;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          justify-content: flex-start;
+        }
+
+        .toolbar,
+        .search,
+        .filters {
+          width: 346px;
+          max-width: calc(100vw - 44px);
+        }
+
+        .filter-button {
+          width: 100%;
+        }
+
+        .stats {
+          display: grid;
+          grid-template-columns: 1fr;
+          max-width: 280px;
+        }
+
+        .section-heading {
+          align-items: flex-start;
+          flex-direction: column;
+          gap: 6px;
+        }
+
+        .grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav" aria-label="Primary">
+        <a class="brand" href="#top" aria-label="Compiler Assist home">
+          <span class="brand-mark">CA</span>
+          <span>Compiler Assist</span>
+        </a>
+        <div class="nav-links">
+          <a href="#directory">Directory</a>
+          <a href="#support">Research Support</a>
+          <a href="https://github.com/therealjameswilson/Compiler-Assist" rel="noreferrer">GitHub</a>
+        </div>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-label="Compiler Assist">
+        <div class="hero-inner">
+          <p class="kicker">FRUS research workspaces</p>
+          <h1>Compiler Assist</h1>
+          <p class="hero-copy">
+            A central desk for FRUS Assist pages: volume workspaces, compiler gap audits,
+            source maps, chronology tools, and archival research queues.
+          </p>
+          <div class="stats" aria-label="Directory summary">
+            <div class="stat"><strong>22</strong><span>assist workspaces</span></div>
+            <div class="stat"><strong>18</strong><span>live pages</span></div>
+            <div class="stat"><strong>4</strong><span>local mirrors</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="directory" id="directory">
+        <div class="toolbar" aria-label="Directory controls">
+          <label class="search" for="site-search">
+            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none">
+              <path
+                d="m21 21-4.35-4.35M10.5 18a7.5 7.5 0 1 1 0-15 7.5 7.5 0 0 1 0 15Z"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+            </svg>
+            <input id="site-search" type="search" placeholder="Search volumes, regions, or topics" />
+          </label>
+          <div class="filters" role="group" aria-label="Filter by era">
+            <button class="filter-button" type="button" data-filter="all" aria-pressed="true">All</button>
+            <button class="filter-button" type="button" data-filter="1981-1988" aria-pressed="false">1981-1988</button>
+            <button class="filter-button" type="button" data-filter="1989-1992" aria-pressed="false">1989-1992</button>
+            <button class="filter-button" type="button" data-filter="1993-2000" aria-pressed="false">1993-2000</button>
+            <button class="filter-button" type="button" data-filter="2001" aria-pressed="false">2001</button>
+            <button class="filter-button" type="button" data-filter="support" aria-pressed="false">Support</button>
+          </div>
+        </div>
+
+        <div class="section-heading">
+          <h2>Assist Pages</h2>
+          <p><span id="result-count">22</span> shown</p>
+        </div>
+
+        <div class="grid" id="assist-grid">
+          <article class="assist-card" data-era="1981-1988" data-search="trade monetary policy industrialized country cooperation volume xxxvii fep 85 88">
+            <div class="card-stripe"></div>
+            <div class="card-body">
+              <div class="tags"><span class="tag">1981-1988</span><span class="tag mirror">Mirror</span></div>
+              <h3>Trade; Monetary Policy; Industrialized Country Cooperation</h3>
+              <p>Volume XXXVII assist page for economic policy, trade, monetary affairs, and industrialized-country cooperation.</p>
+              <div class="card-footer">
+                <a class="open-link" href="FEP-85-88/">Open Page</a>
+                <a class="repo-link" href="https://github.com/therealjameswilson/FEP-85-88" rel="noreferrer">Repo</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="assist-card" data-era="1989-1992" data-search="organization management foreign policy volume ii org man 89 92 intelligence nsc administration">
+            <div class="card-stripe"></div>
+            <div class="card-body">
+              <div class="tags"><span class="tag">1989-1992</span><span class="tag live">Live</span></div>
+              <h3>Organization and Management of Foreign Policy</h3>
+              <p>Volume II working repository for NSC organization, intelligence matters, front matter, and source discovery.</p>
+              <div class="card-footer">
+                <a class="open-link" href="https://therealjameswilson.github.io/org-man-89-92/" rel="noreferrer">Open Page</a>
+                <a class="repo-link" href="https://github.com/therealjameswilson/org-man-89-92" rel="noreferrer">Repo</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="assist-card" data-era="1989-1992" data-search="soviet union russia post soviet states policy files volume iv russia fsu 89 92">
+            <div class="card-stripe"></div>
+            <div class="card-body">
+              <div class="tags"><span class="tag">1989-1992</span><span class="tag live">Live</span></div>
+              <h3>Soviet Union, Russia, and Post-Soviet States: Policy</h3>
+              <p>Volume IV workspace for policy files, republic transitions, high-level contacts, and source-map records.</p>
+              <div class="card-footer">
+                <a class="open-link" href="https://therealjameswilson.github.io/89-92-RussiaFSU-Policy/" rel="noreferrer">Open Page</a>
+                <a class="repo-link" href="https://github.com/therealjameswilson/89-92-RussiaFSU-Policy" rel="noreferrer">Repo</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="assist-card" data-era="1989-1992" data-search="eastern europe memcons telcons volume v ee 89 92">
+            <div class="card-stripe"></div>
+            <div class="card-body">
+              <div class="tags"><span class="tag">1989-1992</span><span class="tag live">Live</span></div>
+              <h3>Eastern Europe Memcons and Telcons</h3>
+              <p>Volume V desk for leader conversations, regional chronology, source review, and candidate records.</p>
+              <div class="card-footer">
+                <a class="open-link" href="https://therealjameswilson.github.io/EE-89-92/" rel="noreferrer">Open Page</a>
+                <a class="repo-link" href="https://github.com/therealjameswilson/EE-89-92" rel="noreferrer">Repo</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="assist-card" data-era="1989-1992" data-search="greece cyprus turkey regional files volume vi gct 89 92">
+            <div class="card-stripe"></div>
+            <div class="card-body">
+              <div class="tags"><span class="tag">1989-1992</span><span class="tag live">Live</span></div>
+              <h3>Greece, Cyprus, Turkey, and Regional Files</h3>
+              <p>Volume VI research assistant for regional records, source trails, and compiler-ready leads.</p>
+              <div class="card-footer">
+                <a class="open-link" href="https://therealjameswilson.github.io/GCT-89-92/" rel="noreferrer">Open Page</a>
+                <a class="repo-link" href="https://github.com/therealjameswilson/GCT-89-92" rel="noreferrer">Repo</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="assist-card" data-era="1989-1992" data-search="western europe memcons telcons volume viii bush41 western europe germany france united kingdom">
+            <div class="card-stripe"></div>
+            <div class="card-body">
+              <div class="tags"><span class="tag">1989-1992</span><span class="tag live">Live</span></div>
+              <h3>Western Europe Memcons and Telcons</h3>
+              <p>Volume VIII workspace for Western Europe leader conversations, country chapters, and document packets.</p>
+              <div class="card-footer">
+                <a class="open-link" href="https://therealjameswilson.github.io/Bush41-Western-Europe/" rel="noreferrer">Open Page</a>
+                <a class="repo-link" href="https://github.com/therealjameswilson/Bush41-Western-Europe" rel="noreferrer">Repo</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="assist-card" data-era="1989-1992" data-search="north africa sub saharan africa volume xx northafrica 89 92">
+            <div class="card-stripe"></div>
+            <div class="card-body">
+              <div class="tags"><span class="tag">1989-1992</span><span class="tag live">Live</span></div>
+              <h3>North Africa; Sub-Saharan Africa</h3>
+              <p>Volume XX assist page for African regional records, source leads, public statements, and gap checks.</p>
+              <div class="card-footer">
+                <a class="open-link" href="https://therealjameswilson.github.io/NorthAfrica-89-92/" rel="noreferrer">Open Page</a>
+                <a class="repo-link" href="https://github.com/therealjameswilson/NorthAfrica-89-92" rel="noreferrer">Repo</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="assist-card" data-era="1989-1992" data-search="south america latin america memcons telcons volume xxv bush41 latam">
+            <div class="card-stripe"></div>
+            <div class="card-body">
+              <div class="tags"><span class="tag">1989-1992</span><span class="tag live">Live</span></div>
+              <h3>South America Memcons and Telcons</h3>
+              <p>Volume XXV workspace for Latin American leader conversations, provenance review, and print candidates.</p>
+              <div class="card-footer">
+                <a class="open-link" href="https://therealjameswilson.github.io/Bush41-LatAm/" rel="noreferrer">Open Page</a>
+                <a class="repo-link" href="https://github.com/therealjameswilson/Bush41-LatAm" rel="noreferrer">Repo</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="assist-card" data-era="1989-1992" data-search="counternarcotics counterterrorism drugs thugs volume xxviii bush41">
+            <div class="card-stripe"></div>
+            <div class="card-body">
+              <div class="tags"><span class="tag">1989-1992</span><span class="tag live">Live</span></div>
+              <h3>Counternarcotics and Counterterrorism Files</h3>
+              <p>Volume XXVIII workspace for chronology, persons, events, public statements, and source gaps.</p>
+              <div class="card-footer">
+                <a class="open-link" href="https://therealjameswilson.github.io/Bush41-drugs-thugs/" rel="noreferrer">Open Page</a>
+                <a class="repo-link" href="https://github.com/therealjameswilson/Bush41-drugs-thugs" rel="noreferrer">Repo</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="assist-card" data-era="1989-1992" data-search="global issues volume xxix assistant environment refugees human rights global issues 89 92">
+            <div class="card-stripe"></div>
+            <div class="card-body">
+              <div class="tags"><span class="tag">1989-1992</span><span class="tag mirror">Mirror</span></div>
+              <h3>Global Issues Compiler Assistant</h3>
+              <p>Volume XXIX assist page for topic-level research, NARA scout passes, and public-statement audits.</p>
+              <div class="card-footer">
+                <a class="open-link" href="global-issues-89-92/">Open Page</a>
+                <a class="repo-link" href="https://github.com/therealjameswilson/global-issues-89-92" rel="noreferrer">Repo</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="assist-card" data-era="1989-1992" data-search="south asia memcons source files bush41 india pakistan afghanistan">
+            <div class="card-stripe"></div>
+            <div class="card-body">
+              <div class="tags"><span class="tag">1989-1992</span><span class="tag live">Live</span></div>
+              <h3>South Asia Memcons and Source Files</h3>
+              <p>South Asia workspace for memcons, potential documents, compiler gaps, daily-diary references, and persons.</p>
+              <div class="card-footer">
+                <a class="open-link" href="https://therealjameswilson.github.io/Bush41-SouthAsia/" rel="noreferrer">Open Page</a>
+                <a class="repo-link" href="https://github.com/therealjameswilson/Bush41-SouthAsia" rel="noreferrer">Repo</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="assist-card" data-era="1993-2000" data-search="foundations foreign policy clinton volume i">
+            <div class="card-stripe"></div>
+            <div class="card-body">
+              <div class="tags"><span class="tag">1993-2000</span><span class="tag mirror">Mirror</span></div>
+              <h3>Foundations of Foreign Policy</h3>
+              <p>Volume I assist page for foundational foreign-policy documents, source mapping, and gap analysis.</p>
+              <div class="card-footer">
+                <a class="open-link" href="Clinton-Foundations/">Open Page</a>
+                <a class="repo-link" href="https://github.com/therealjameswilson/Clinton-Foundations" rel="noreferrer">Repo</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="assist-card" data-era="1993-2000" data-search="arms control nonproliferation 1993 1996 volume vii clinton">
+            <div class="card-stripe"></div>
+            <div class="card-body">
+              <div class="tags"><span class="tag">1993-2000</span><span class="tag live">Live</span></div>
+              <h3>Arms Control and Nonproliferation, 1993-1996</h3>
+              <p>Volume VII workspace for arms-control chronology, NARA scout leads, source-note audit, and diary references.</p>
+              <div class="card-footer">
+                <a class="open-link" href="https://therealjameswilson.github.io/Clinton-armscontrol-93-96/" rel="noreferrer">Open Page</a>
+                <a class="repo-link" href="https://github.com/therealjameswilson/Clinton-armscontrol-93-96" rel="noreferrer">Repo</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="assist-card" data-era="1993-2000" data-search="arms control nonproliferation 1997 2000 volume viii clinton">
+            <div class="card-stripe"></div>
+            <div class="card-body">
+              <div class="tags"><span class="tag">1993-2000</span><span class="tag live">Live</span></div>
+              <h3>Arms Control and Nonproliferation, 1997-2000</h3>
+              <p>Volume VIII assist page for research planning, presidential diary sources, volume handoff, and compiler gaps.</p>
+              <div class="card-footer">
+                <a class="open-link" href="https://therealjameswilson.github.io/armscontrol-97-2000/" rel="noreferrer">Open Page</a>
+                <a class="repo-link" href="https://github.com/therealjameswilson/armscontrol-97-2000" rel="noreferrer">Repo</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="assist-card" data-era="1993-2000" data-search="balkans 1993 1995 volume xv bosnia croatia serbia">
+            <div class="card-stripe"></div>
+            <div class="card-body">
+              <div class="tags"><span class="tag">1993-2000</span><span class="tag live">Live</span></div>
+              <h3>Balkans Compiler Workspace</h3>
+              <p>Volume XV compiler workspace for Balkans chronology, source plans, records, and research queues.</p>
+              <div class="card-footer">
+                <a class="open-link" href="https://therealjameswilson.github.io/Balkans-93-95/" rel="noreferrer">Open Page</a>
+                <a class="repo-link" href="https://github.com/therealjameswilson/Balkans-93-95" rel="noreferrer">Repo</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="assist-card" data-era="1993-2000" data-search="nato european security volume xvii clinton">
+            <div class="card-stripe"></div>
+            <div class="card-body">
+              <div class="tags"><span class="tag">1993-2000</span><span class="tag live">Live</span></div>
+              <h3>NATO and European Security Files</h3>
+              <p>Volume XVII workspace for NATO enlargement, European security files, source-note style, and daily diary searches.</p>
+              <div class="card-footer">
+                <a class="open-link" href="https://therealjameswilson.github.io/Clinton-NATO-European-Security/" rel="noreferrer">Open Page</a>
+                <a class="repo-link" href="https://github.com/therealjameswilson/Clinton-NATO-European-Security" rel="noreferrer">Repo</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="assist-card" data-era="1993-2000" data-search="russia high level files volume xviii clinton yeltsin talbott">
+            <div class="card-stripe"></div>
+            <div class="card-body">
+              <div class="tags"><span class="tag">1993-2000</span><span class="tag live">Live</span></div>
+              <h3>Clinton-Russia High-Level Files</h3>
+              <p>Volume XVIII workspace for high-level contacts, Russia memcons, public documents, and research-source review.</p>
+              <div class="card-footer">
+                <a class="open-link" href="https://therealjameswilson.github.io/Clinton-Russia-High-Level/" rel="noreferrer">Open Page</a>
+                <a class="repo-link" href="https://github.com/therealjameswilson/Clinton-Russia-High-Level" rel="noreferrer">Repo</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="assist-card" data-era="1993-2000" data-search="europe volumes xxii xxiii xxiv clinton europe assister">
+            <div class="card-stripe"></div>
+            <div class="card-body">
+              <div class="tags"><span class="tag">1993-2000</span><span class="tag live">Live</span></div>
+              <h3>Europe Assister</h3>
+              <p>A working desk for Volumes XXII, XXIII, and XXIV, with chronology, leads, gaps, and source repositories.</p>
+              <div class="card-footer">
+                <a class="open-link" href="https://therealjameswilson.github.io/Clinton-Europe/" rel="noreferrer">Open Page</a>
+                <a class="repo-link" href="https://github.com/therealjameswilson/Clinton-Europe" rel="noreferrer">Repo</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="assist-card" data-era="1993-2000" data-search="south africa southern africa volume xxvii clinton">
+            <div class="card-stripe"></div>
+            <div class="card-body">
+              <div class="tags"><span class="tag">1993-2000</span><span class="tag live">Live</span></div>
+              <h3>South Africa; Southern Africa</h3>
+              <p>Volume XXVII assist page for southern Africa records, source checks, and compiler gap analysis.</p>
+              <div class="card-footer">
+                <a class="open-link" href="https://therealjameswilson.github.io/Clinton-South-and-Southern-Africa/" rel="noreferrer">Open Page</a>
+                <a class="repo-link" href="https://github.com/therealjameswilson/Clinton-South-and-Southern-Africa" rel="noreferrer">Repo</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="assist-card" data-era="1993-2000" data-search="central america volume xxxii clinton compiler workspace">
+            <div class="card-stripe"></div>
+            <div class="card-body">
+              <div class="tags"><span class="tag">1993-2000</span><span class="tag mirror">Mirror</span></div>
+              <h3>Central America Compiler Workspace</h3>
+              <p>Volume XXXII workspace for chronology, official sources, country files, library leads, and research queue.</p>
+              <div class="card-footer">
+                <a class="open-link" href="Clinton-CentralAmerica/">Open Page</a>
+                <a class="repo-link" href="https://github.com/therealjameswilson/Clinton-CentralAmerica" rel="noreferrer">Repo</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="assist-card" data-era="2001" data-search="counterterrorism before september 11 sept10 frus assist january 20 september 10 2001">
+            <div class="card-stripe"></div>
+            <div class="card-body">
+              <div class="tags"><span class="tag">2001</span><span class="tag live">Live</span></div>
+              <h3>Counterterrorism before September 11</h3>
+              <p>Sept10 FRUS assist page for January 20 to September 10, 2001 counterterrorism records and retrieval matrices.</p>
+              <div class="card-footer">
+                <a class="open-link" href="https://therealjameswilson.github.io/Sept10-FRUS/" rel="noreferrer">Open Page</a>
+                <a class="repo-link" href="https://github.com/therealjameswilson/Sept10-FRUS" rel="noreferrer">Repo</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="assist-card" id="support" data-era="support" data-search="strobe talbott foia manifest case f 2017 13804 support">
+            <div class="card-stripe"></div>
+            <div class="card-body">
+              <div class="tags"><span class="tag">Support</span><span class="tag live">Live</span></div>
+              <h3>Strobe Talbott FOIA Manifest</h3>
+              <p>Research-support manifest for FOIA case F-2017-13804, with document pages and search assets.</p>
+              <div class="card-footer">
+                <a class="open-link" href="https://therealjameswilson.github.io/strobe-talbott-foia/" rel="noreferrer">Open Page</a>
+                <a class="repo-link" href="https://github.com/therealjameswilson/strobe-talbott-foia" rel="noreferrer">Repo</a>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="empty" id="empty-state">No matching assist pages.</div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-inner">
+        Compiler Assist links to FRUS Assist workspaces maintained under the therealjameswilson GitHub account.
+      </div>
+    </footer>
+
+    <script>
+      const searchInput = document.querySelector("#site-search");
+      const cards = Array.from(document.querySelectorAll(".assist-card"));
+      const resultCount = document.querySelector("#result-count");
+      const emptyState = document.querySelector("#empty-state");
+      const filterButtons = Array.from(document.querySelectorAll(".filter-button"));
+      let activeFilter = "all";
+
+      function updateCards() {
+        const query = searchInput.value.trim().toLowerCase();
+        let visibleCount = 0;
+
+        for (const card of cards) {
+          const eraMatch = activeFilter === "all" || card.dataset.era === activeFilter;
+          const text = `${card.textContent} ${card.dataset.search}`.toLowerCase();
+          const searchMatch = query === "" || text.includes(query);
+          const visible = eraMatch && searchMatch;
+          card.hidden = !visible;
+          if (visible) visibleCount += 1;
+        }
+
+        resultCount.textContent = String(visibleCount);
+        emptyState.classList.toggle("visible", visibleCount === 0);
+      }
+
+      searchInput.addEventListener("input", updateCards);
+
+      for (const button of filterButtons) {
+        button.addEventListener("click", () => {
+          activeFilter = button.dataset.filter;
+          for (const item of filterButtons) {
+            item.setAttribute("aria-pressed", String(item === button));
+          }
+          updateCards();
+        });
+      }
+    </script>
+  </body>
+</html>
