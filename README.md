@@ -15,3 +15,5 @@ Published target:
 - `global-issues-89-92/`: local mirror for an unpublished assist page
 
 Most cards link directly to already-published GitHub Pages sites under `therealjameswilson.github.io`.
+
+The landing page also includes direct research-support links to the Strobe Talbott FOIA Manifest and NARA Scout.

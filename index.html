@@ -282,6 +282,52 @@
         font-weight: 700;
       }
 
+      .support-tools {
+        margin: 24px 0 30px;
+      }
+
+      .support-tools h2 {
+        margin: 0 0 12px;
+        font-size: clamp(1.2rem, 2vw, 1.6rem);
+        letter-spacing: 0;
+      }
+
+      .tool-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      .tool-card {
+        display: flex;
+        min-height: 156px;
+        flex-direction: column;
+        gap: 12px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 18px;
+        background: var(--surface-strong);
+        box-shadow: 0 12px 28px rgba(27, 31, 34, 0.07);
+      }
+
+      .tool-card h3 {
+        margin: 0;
+        font-size: 1.06rem;
+        line-height: 1.25;
+      }
+
+      .tool-card p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 0.94rem;
+        line-height: 1.5;
+      }
+
+      .tool-card .open-link {
+        align-self: flex-start;
+        margin-top: auto;
+      }
+
       .grid {
         display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -470,6 +516,10 @@
         .grid {
           grid-template-columns: repeat(2, minmax(0, 1fr));
         }
+
+        .tool-grid {
+          grid-template-columns: 1fr;
+        }
       }
 
       @media (max-width: 640px) {
@@ -575,9 +625,10 @@
             source maps, chronology tools, and archival research queues.
           </p>
           <div class="stats" aria-label="Directory summary">
-            <div class="stat"><strong>20</strong><span>assist workspaces</span></div>
-            <div class="stat"><strong>17</strong><span>live pages</span></div>
+            <div class="stat"><strong>19</strong><span>assist workspaces</span></div>
+            <div class="stat"><strong>16</strong><span>live pages</span></div>
             <div class="stat"><strong>3</strong><span>local mirrors</span></div>
+            <div class="stat"><strong>2</strong><span>support tools</span></div>
           </div>
         </div>
       </section>
@@ -600,13 +651,30 @@
             <button class="filter-button" type="button" data-filter="1989-1992" aria-pressed="false">1989-1992</button>
             <button class="filter-button" type="button" data-filter="1993-2000" aria-pressed="false">1993-2000</button>
             <button class="filter-button" type="button" data-filter="2001" aria-pressed="false">2001</button>
-            <button class="filter-button" type="button" data-filter="support" aria-pressed="false">Support</button>
           </div>
         </div>
 
+        <section class="support-tools" id="support" aria-labelledby="support-title">
+          <h2 id="support-title">Research Support</h2>
+          <div class="tool-grid">
+            <article class="tool-card">
+              <div class="tags"><span class="tag">Support</span><span class="tag live">Live</span></div>
+              <h3>Strobe Talbott FOIA Manifest</h3>
+              <p>State Department FOIA case F-2017-13804, with document pages and search assets for Clinton-era FRUS work.</p>
+              <a class="open-link" href="https://therealjameswilson.github.io/strobe-talbott-foia/" rel="noreferrer">Open Strobe</a>
+            </article>
+            <article class="tool-card">
+              <div class="tags"><span class="tag">Support</span><span class="tag live">Live</span></div>
+              <h3>NARA Scout</h3>
+              <p>A reconnaissance tool for FRUS compilers searching NARA records, withdrawal sheets, and unprocessed collections.</p>
+              <a class="open-link" href="https://therealjameswilson.github.io/nara-scout/" rel="noreferrer">Open NARA Scout</a>
+            </article>
+          </div>
+        </section>
+
         <div class="section-heading">
           <h2>Assist Pages</h2>
-          <p><span id="result-count">20</span> shown</p>
+          <p><span id="result-count">19</span> shown</p>
         </div>
 
         <div class="grid" id="assist-grid">
@@ -876,19 +944,6 @@
             </div>
           </article>
 
-          <article class="assist-card" id="support" data-era="support" data-search="strobe talbott foia manifest case f 2017 13804 support">
-            <div class="card-stripe"></div>
-            <div class="card-body">
-              <div class="tags"><span class="tag">Support</span><span class="tag live">Live</span></div>
-              <h3>Strobe Talbott FOIA Manifest</h3>
-              <p class="volume-title"><span>Research support</span>Cross-volume Clinton-era source support from State Department FOIA case F-2017-13804; no single FRUS volume title</p>
-              <p>Research-support manifest for FOIA case F-2017-13804, with document pages and search assets.</p>
-              <div class="card-footer">
-                <a class="open-link" href="https://therealjameswilson.github.io/strobe-talbott-foia/" rel="noreferrer">Open Page</a>
-                <a class="repo-link" href="https://github.com/therealjameswilson/strobe-talbott-foia" rel="noreferrer">Repo</a>
-              </div>
-            </div>
-          </article>
         </div>
 
         <div class="empty" id="empty-state">No matching assist pages.</div>
