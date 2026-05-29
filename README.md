@@ -10,10 +10,13 @@ Published target:
 
 - `index.html`: static directory page with search and era filters
 - `assets/compiler-assist-hero.png`: generated hero image asset
-- `Clinton-CentralAmerica/`: local mirror for an unpublished assist page
-- `Clinton-Foundations/`: local mirror for an unpublished assist page
-- `global-issues-89-92/`: local mirror for an unpublished assist page
+- 37 official-order FRUS Assist links for every volume listed as Being Researched on history.state.gov as of May 29, 2026
+- Research-support links for the Strobe Talbott FOIA Manifest and NARA Scout
 
-Most cards link directly to already-published GitHub Pages sites under `therealjameswilson.github.io`.
+Each volume card uses the actual history.state.gov title and links to:
 
-The landing page also includes direct research-support links to the Strobe Talbott FOIA Manifest and NARA Scout.
+- the generated GitHub Pages assist site
+- the generated GitHub repository
+- the official history.state.gov volume page
+
+Some cards also include companion workbench links for richer existing research pages.
