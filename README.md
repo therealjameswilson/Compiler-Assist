@@ -13,12 +13,16 @@ Published target:
 - `data/being-researched.json`: checked snapshot of the official Being Researched list
 - `scripts/check-status.mjs`: compares the checked snapshot against history.state.gov
 - `.github/workflows/status-check.yml`: scheduled drift check for the status snapshot
-- 37 official-order FRUS Assist links for every volume listed as Being Researched on history.state.gov as of May 29, 2026
+- 37 official-order FRUS Assist links for every volume listed as Being Researched on history.state.gov as of June 1, 2026
+- direct links to each volume's research dataset and gap register
+- 22 companion workbench links for richer existing research pages and planned-volume desks
 - Research-support links for the Strobe Talbott FOIA Manifest and NARA Scout
 
 Each volume card uses the actual history.state.gov title and links to:
 
 - the generated GitHub Pages assist site
+- the volume research dataset
+- the volume gap register
 - the generated GitHub repository
 - the official history.state.gov volume page
 

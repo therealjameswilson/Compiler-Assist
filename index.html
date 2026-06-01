@@ -273,6 +273,39 @@
         align-self: flex-start;
         margin-top: auto;
       }
+      .workbench-section { margin: 28px 0 34px; }
+      .workbench-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+      }
+      .workbench-card {
+        display: flex;
+        min-height: 190px;
+        flex-direction: column;
+        gap: 12px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 16px;
+        background: var(--surface-strong);
+        box-shadow: 0 12px 28px rgba(27, 31, 34, 0.07);
+      }
+      .workbench-card[hidden] { display: none; }
+      .workbench-card h3 {
+        margin: 0;
+        font-size: 1rem;
+        line-height: 1.25;
+      }
+      .workbench-card p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 0.9rem;
+        line-height: 1.45;
+      }
+      .workbench-card .open-link {
+        align-self: flex-start;
+        margin-top: auto;
+      }
       .grid {
         display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -426,7 +459,7 @@
       @media (max-width: 1020px) {
         .toolbar { grid-template-columns: 1fr; }
         .filters { justify-content: flex-start; }
-        .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        .grid, .workbench-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       }
       @media (max-width: 760px) {
         .nav {
@@ -475,7 +508,7 @@
           flex-direction: column;
           gap: 6px;
         }
-        .grid, .tool-grid { grid-template-columns: 1fr; }
+        .grid, .tool-grid, .workbench-grid { grid-template-columns: 1fr; }
       }
     </style>
   </head>
@@ -488,6 +521,7 @@
         </a>
         <div class="nav-links">
           <a href="#directory">Directory</a>
+          <a href="#workbenches">Workbenches</a>
           <a href="#support">Research Support</a>
           <a href="https://history.state.gov/historicaldocuments/status-of-the-series" rel="noreferrer">Status</a>
           <a href="https://github.com/therealjameswilson/Compiler-Assist" rel="noreferrer">GitHub</a>
@@ -503,11 +537,12 @@
           <p class="hero-copy">
             Official-order FRUS Assist pages for every volume currently listed as Being Researched on history.state.gov, with support links for source scouting and FOIA manifest work.
           </p>
-          <p class="sync-note">Synced May 29, 2026 from the Office of the Historian Status of the Series page. Daily drift checks run in GitHub Actions.</p>
+          <p class="sync-note">Verified June 1, 2026 against the Office of the Historian Status of the Series page. Daily drift checks run in GitHub Actions.</p>
           <div class="stats" aria-label="Directory summary">
             <div class="stat"><strong>37</strong><span>researched volumes</span></div>
             <div class="stat"><strong>37</strong><span>research datasets</span></div>
             <div class="stat"><strong>37</strong><span>gap registers</span></div>
+            <div class="stat"><strong>22</strong><span>companion workbenches</span></div>
             <div class="stat"><strong>2</strong><span>support tools</span></div>
           </div>
         </div>
@@ -549,6 +584,147 @@
           </div>
         </section>
 
+        <section class="workbench-section" id="workbenches" aria-labelledby="workbench-title">
+          <div class="section-heading">
+            <h2 id="workbench-title">Companion Workbenches</h2>
+            <p><span id="workbench-count">22</span> shown</p>
+          </div>
+          <div class="workbench-grid" id="workbench-grid">
+            <article class="workbench-card" data-era="1981-1988" data-search="1981-1988 volume xxxvii trade monetary policy industrialized country cooperation fep foreign economic policy">
+              <div class="tags"><span class="tag">1981-1988</span><span class="tag live">Live</span></div>
+              <h3>FEP 1985-1988</h3>
+              <p>Trade, monetary policy, and industrialized-country cooperation workbench for Volume XXXVII.</p>
+              <a class="open-link" href="https://therealjameswilson.github.io/FEP-85-88/" rel="noreferrer">Open Workbench</a>
+            </article>
+            <article class="workbench-card" data-era="1989-1992" data-search="1989-1992 volume ii organization management foreign policy org man">
+              <div class="tags"><span class="tag">1989-1992</span><span class="tag live">Live</span></div>
+              <h3>Organization and Management</h3>
+              <p>Companion desk for Volume II organization, management, and foreign-policy process files.</p>
+              <a class="open-link" href="https://therealjameswilson.github.io/org-man-89-92/" rel="noreferrer">Open Workbench</a>
+            </article>
+            <article class="workbench-card" data-era="1989-1992" data-search="1989-1992 volume iv soviet union russia post-soviet states policy fsu">
+              <div class="tags"><span class="tag">1989-1992</span><span class="tag live">Live</span></div>
+              <h3>Russia/FSU Policy</h3>
+              <p>Policy workbench for Soviet Union, Russia, and post-Soviet states Volume IV research.</p>
+              <a class="open-link" href="https://therealjameswilson.github.io/89-92-RussiaFSU-Policy/" rel="noreferrer">Open Workbench</a>
+            </article>
+            <article class="workbench-card" data-era="1989-1992" data-search="1989-1992 volume v eastern europe memcons telcons">
+              <div class="tags"><span class="tag">1989-1992</span><span class="tag live">Live</span></div>
+              <h3>Eastern Europe</h3>
+              <p>Memcons and telcons companion workbench for Volume V Eastern Europe research.</p>
+              <a class="open-link" href="https://therealjameswilson.github.io/EE-89-92/" rel="noreferrer">Open Workbench</a>
+            </article>
+            <article class="workbench-card" data-era="1989-1992" data-search="1989-1992 volume vi eastern mediterranean gct greece cyprus turkey">
+              <div class="tags"><span class="tag">1989-1992</span><span class="tag live">Live</span></div>
+              <h3>Eastern Mediterranean</h3>
+              <p>Chronology and research assistant for Volume VI Eastern Mediterranean source work.</p>
+              <a class="open-link" href="https://therealjameswilson.github.io/GCT-89-92/" rel="noreferrer">Open Workbench</a>
+            </article>
+            <article class="workbench-card" data-era="1989-1992" data-search="1989-1992 volume viii western europe memcons telcons">
+              <div class="tags"><span class="tag">1989-1992</span><span class="tag live">Live</span></div>
+              <h3>Western Europe</h3>
+              <p>Memcons and telcons companion workbench for Volume VIII Western Europe research.</p>
+              <a class="open-link" href="https://therealjameswilson.github.io/Bush41-Western-Europe/" rel="noreferrer">Open Workbench</a>
+            </article>
+            <article class="workbench-card" data-era="1989-1992" data-search="1989-1992 volume xiv arab-israeli dispute mepp middle east peace process">
+              <div class="tags"><span class="tag">1989-1992</span><span class="tag live">Live</span></div>
+              <h3>Arab-Israeli Dispute</h3>
+              <p>Middle East peace process assist page for Volume XIV chronology and source leads.</p>
+              <a class="open-link" href="https://therealjameswilson.github.io/Bush41-MEPP/" rel="noreferrer">Open Workbench</a>
+            </article>
+            <article class="workbench-card" data-era="1989-1992" data-search="1989-1992 volume xv south asia">
+              <div class="tags"><span class="tag">1989-1992</span><span class="tag live">Live</span></div>
+              <h3>South Asia</h3>
+              <p>Declassified-document chronology and file leads for Volume XV South Asia research.</p>
+              <a class="open-link" href="https://therealjameswilson.github.io/Bush41-SouthAsia/" rel="noreferrer">Open Workbench</a>
+            </article>
+            <article class="workbench-card" data-era="1989-1992" data-search="1989-1992 volume xx north africa sub-saharan africa">
+              <div class="tags"><span class="tag">1989-1992</span><span class="tag live">Live</span></div>
+              <h3>North Africa; Sub-Saharan Africa</h3>
+              <p>Volume XX assist page for African regional research, chronology, and source leads.</p>
+              <a class="open-link" href="https://therealjameswilson.github.io/NorthAfrica-89-92/" rel="noreferrer">Open Workbench</a>
+            </article>
+            <article class="workbench-card" data-era="1989-1992" data-search="1989-1992 volume xxv south america latin america memcons telcons">
+              <div class="tags"><span class="tag">1989-1992</span><span class="tag live">Live</span></div>
+              <h3>South America</h3>
+              <p>Memcons and telcons companion workbench for Volume XXV South America research.</p>
+              <a class="open-link" href="https://therealjameswilson.github.io/Bush41-LatAm/" rel="noreferrer">Open Workbench</a>
+            </article>
+            <article class="workbench-card" data-era="1989-1992" data-search="1989-1992 volume xxviii counternarcotics counterterrorism drugs thugs planned">
+              <div class="tags"><span class="tag">1989-1992</span><span class="tag live">Live</span></div>
+              <h3>Counternarcotics; Counterterrorism</h3>
+              <p>Planned-volume workbench for Volume XXVIII counternarcotics and counterterrorism files.</p>
+              <a class="open-link" href="https://therealjameswilson.github.io/Bush41-drugs-thugs/" rel="noreferrer">Open Workbench</a>
+            </article>
+            <article class="workbench-card" data-era="1989-1992" data-search="1989-1992 volume xxix global issues planned united nations multilateral">
+              <div class="tags"><span class="tag">1989-1992</span><span class="tag live">Live</span></div>
+              <h3>Global Issues</h3>
+              <p>Planned-volume assistant for Volume XXIX source leads, packets, and promotion queues.</p>
+              <a class="open-link" href="https://therealjameswilson.github.io/global-issues-89-92/" rel="noreferrer">Open Workbench</a>
+            </article>
+            <article class="workbench-card" data-era="1993-2000" data-search="1993-2000 volume i foundations foreign policy clinton">
+              <div class="tags"><span class="tag">1993-2000</span><span class="tag live">Live</span></div>
+              <h3>Clinton Foundations</h3>
+              <p>Volume I Foundations of Foreign Policy workspace with doctrine, speeches, and source gaps.</p>
+              <a class="open-link" href="https://therealjameswilson.github.io/Clinton-Foundations/" rel="noreferrer">Open Workbench</a>
+            </article>
+            <article class="workbench-card" data-era="1993-2000" data-search="1993-2000 volume vi national security policy clinton nsp planned">
+              <div class="tags"><span class="tag">1993-2000</span><span class="tag live">Live</span></div>
+              <h3>Clinton National Security Policy</h3>
+              <p>Planned-volume workspace for Volume VI national security policy files.</p>
+              <a class="open-link" href="https://therealjameswilson.github.io/Clinton-NSP/" rel="noreferrer">Open Workbench</a>
+            </article>
+            <article class="workbench-card" data-era="1993-2000" data-search="1993-2000 volume vii arms control nonproliferation 1993 1996">
+              <div class="tags"><span class="tag">1993-2000</span><span class="tag live">Live</span></div>
+              <h3>Arms Control, 1993-1996</h3>
+              <p>Planned-volume workbench for Volume VII arms control and nonproliferation source leads.</p>
+              <a class="open-link" href="https://therealjameswilson.github.io/Clinton-armscontrol-93-96/" rel="noreferrer">Open Workbench</a>
+            </article>
+            <article class="workbench-card" data-era="1993-2000" data-search="1993-2000 volume viii arms control nonproliferation 1997 2000">
+              <div class="tags"><span class="tag">1993-2000</span><span class="tag live">Live</span></div>
+              <h3>Arms Control, 1997-2000</h3>
+              <p>Planned-volume workbench for Volume VIII arms control and nonproliferation research.</p>
+              <a class="open-link" href="https://therealjameswilson.github.io/armscontrol-97-2000/" rel="noreferrer">Open Workbench</a>
+            </article>
+            <article class="workbench-card" data-era="1993-2000" data-search="1993-2000 volume xv balkans wars 1993 1995">
+              <div class="tags"><span class="tag">1993-2000</span><span class="tag live">Live</span></div>
+              <h3>Wars in the Balkans, 1993-1995</h3>
+              <p>Volume XV compiler workspace for Balkans chronology, files, and source-note readiness.</p>
+              <a class="open-link" href="https://therealjameswilson.github.io/Balkans-93-95/" rel="noreferrer">Open Workbench</a>
+            </article>
+            <article class="workbench-card" data-era="1993-2000" data-search="1993-2000 volume xvii nato european security planned">
+              <div class="tags"><span class="tag">1993-2000</span><span class="tag live">Live</span></div>
+              <h3>NATO and European Security</h3>
+              <p>Planned-volume file assistant for Volume XVII NATO and European security research.</p>
+              <a class="open-link" href="https://therealjameswilson.github.io/Clinton-NATO-European-Security/" rel="noreferrer">Open Workbench</a>
+            </article>
+            <article class="workbench-card" data-era="1993-2000" data-search="1993-2000 volume xviii russia high-level contacts planned">
+              <div class="tags"><span class="tag">1993-2000</span><span class="tag live">Live</span></div>
+              <h3>Russia: High-Level Contacts</h3>
+              <p>Planned-volume workbench for Clinton-Russia high-level contact files.</p>
+              <a class="open-link" href="https://therealjameswilson.github.io/Clinton-Russia-High-Level/" rel="noreferrer">Open Workbench</a>
+            </article>
+            <article class="workbench-card" data-era="1993-2000" data-search="1993-2000 volume xxii xxiii xxiv europe high-level contacts policy">
+              <div class="tags"><span class="tag">1993-2000</span><span class="tag live">Live</span></div>
+              <h3>Clinton Europe</h3>
+              <p>Working desk for Europe high-level contacts and policy volumes XXII through XXIV.</p>
+              <a class="open-link" href="https://therealjameswilson.github.io/Clinton-Europe/" rel="noreferrer">Open Workbench</a>
+            </article>
+            <article class="workbench-card" data-era="1993-2000" data-search="1993-2000 volume xxvii south africa southern africa">
+              <div class="tags"><span class="tag">1993-2000</span><span class="tag live">Live</span></div>
+              <h3>South Africa; Southern Africa</h3>
+              <p>Volume XXVII assist page for South Africa and southern Africa source work.</p>
+              <a class="open-link" href="https://therealjameswilson.github.io/Clinton-South-and-Southern-Africa/" rel="noreferrer">Open Workbench</a>
+            </article>
+            <article class="workbench-card" data-era="1993-2000" data-search="1993-2000 volume xxxii central america">
+              <div class="tags"><span class="tag">1993-2000</span><span class="tag live">Live</span></div>
+              <h3>Central America</h3>
+              <p>Volume XXXII workspace for Central America chronology, source leads, and gap triage.</p>
+              <a class="open-link" href="https://therealjameswilson.github.io/Clinton-CentralAmerica/" rel="noreferrer">Open Workbench</a>
+            </article>
+          </div>
+        </section>
+
         <div class="section-heading">
           <h2>Being Researched Volume Pages</h2>
           <p><span id="result-count">37</span> shown</p>
@@ -565,6 +741,8 @@
               
               <div class="card-footer">
                 <a class="open-link" href="https://therealjameswilson.github.io/frus-1917-72pubdipv02-assist/" rel="noreferrer">Open Page</a>
+                <a class="repo-link" href="https://therealjameswilson.github.io/frus-1917-72pubdipv02-assist/data/research.json" rel="noreferrer">Data</a>
+                <a class="repo-link" href="https://therealjameswilson.github.io/frus-1917-72pubdipv02-assist/reports/gap-register.md" rel="noreferrer">Gaps</a>
                 <a class="repo-link" href="https://github.com/therealjameswilson/frus-1917-72pubdipv02-assist" rel="noreferrer">Repo</a>
                 <a class="repo-link" href="https://history.state.gov/historicaldocuments/frus1917-72PubDipv02" rel="noreferrer">Volume</a>
               </div>
@@ -581,6 +759,8 @@
               
               <div class="card-footer">
                 <a class="open-link" href="https://therealjameswilson.github.io/frus-1917-72pubdipv03-assist/" rel="noreferrer">Open Page</a>
+                <a class="repo-link" href="https://therealjameswilson.github.io/frus-1917-72pubdipv03-assist/data/research.json" rel="noreferrer">Data</a>
+                <a class="repo-link" href="https://therealjameswilson.github.io/frus-1917-72pubdipv03-assist/reports/gap-register.md" rel="noreferrer">Gaps</a>
                 <a class="repo-link" href="https://github.com/therealjameswilson/frus-1917-72pubdipv03-assist" rel="noreferrer">Repo</a>
                 <a class="repo-link" href="https://history.state.gov/historicaldocuments/frus1917-72PubDipv03" rel="noreferrer">Volume</a>
               </div>
@@ -597,6 +777,8 @@
               
               <div class="card-footer">
                 <a class="open-link" href="https://therealjameswilson.github.io/frus-1956-60intelcom-assist/" rel="noreferrer">Open Page</a>
+                <a class="repo-link" href="https://therealjameswilson.github.io/frus-1956-60intelcom-assist/data/research.json" rel="noreferrer">Data</a>
+                <a class="repo-link" href="https://therealjameswilson.github.io/frus-1956-60intelcom-assist/reports/gap-register.md" rel="noreferrer">Gaps</a>
                 <a class="repo-link" href="https://github.com/therealjameswilson/frus-1956-60intelcom-assist" rel="noreferrer">Repo</a>
                 <a class="repo-link" href="https://history.state.gov/historicaldocuments/frus1956-60IntelCom" rel="noreferrer">Volume</a>
               </div>
@@ -613,6 +795,8 @@
               
               <div class="card-footer">
                 <a class="open-link" href="https://therealjameswilson.github.io/frus-1981-88v08-assist/" rel="noreferrer">Open Page</a>
+                <a class="repo-link" href="https://therealjameswilson.github.io/frus-1981-88v08-assist/data/research.json" rel="noreferrer">Data</a>
+                <a class="repo-link" href="https://therealjameswilson.github.io/frus-1981-88v08-assist/reports/gap-register.md" rel="noreferrer">Gaps</a>
                 <a class="repo-link" href="https://github.com/therealjameswilson/frus-1981-88v08-assist" rel="noreferrer">Repo</a>
                 <a class="repo-link" href="https://history.state.gov/historicaldocuments/frus1981-88v08" rel="noreferrer">Volume</a>
               </div>
@@ -629,6 +813,8 @@
               
               <div class="card-footer">
                 <a class="open-link" href="https://therealjameswilson.github.io/frus-1981-88v23-assist/" rel="noreferrer">Open Page</a>
+                <a class="repo-link" href="https://therealjameswilson.github.io/frus-1981-88v23-assist/data/research.json" rel="noreferrer">Data</a>
+                <a class="repo-link" href="https://therealjameswilson.github.io/frus-1981-88v23-assist/reports/gap-register.md" rel="noreferrer">Gaps</a>
                 <a class="repo-link" href="https://github.com/therealjameswilson/frus-1981-88v23-assist" rel="noreferrer">Repo</a>
                 <a class="repo-link" href="https://history.state.gov/historicaldocuments/frus1981-88v23" rel="noreferrer">Volume</a>
               </div>
@@ -642,9 +828,12 @@
               <h3>Trade; Monetary Policy; Industrialized Country Cooperation, 1985&ndash;1988</h3>
               <p class="volume-title"><span>FRUS volume title</span>Foreign Relations of the United States, 1981&ndash;1988, Volume XXXVII, Trade; Monetary Policy; Industrialized Country Cooperation, 1985&ndash;1988</p>
               <p>Official Compiler Assist page for the history.state.gov volume record <strong>frus1981-88v37</strong>.</p>
+              <a class="companion-link" href="https://therealjameswilson.github.io/FEP-85-88/" rel="noreferrer">FEP companion workbench</a>
               
               <div class="card-footer">
                 <a class="open-link" href="https://therealjameswilson.github.io/frus-1981-88v37-assist/" rel="noreferrer">Open Page</a>
+                <a class="repo-link" href="https://therealjameswilson.github.io/frus-1981-88v37-assist/data/research.json" rel="noreferrer">Data</a>
+                <a class="repo-link" href="https://therealjameswilson.github.io/frus-1981-88v37-assist/reports/gap-register.md" rel="noreferrer">Gaps</a>
                 <a class="repo-link" href="https://github.com/therealjameswilson/frus-1981-88v37-assist" rel="noreferrer">Repo</a>
                 <a class="repo-link" href="https://history.state.gov/historicaldocuments/frus1981-88v37" rel="noreferrer">Volume</a>
               </div>
@@ -661,6 +850,8 @@
               
               <div class="card-footer">
                 <a class="open-link" href="https://therealjameswilson.github.io/frus-1981-88v42-assist/" rel="noreferrer">Open Page</a>
+                <a class="repo-link" href="https://therealjameswilson.github.io/frus-1981-88v42-assist/data/research.json" rel="noreferrer">Data</a>
+                <a class="repo-link" href="https://therealjameswilson.github.io/frus-1981-88v42-assist/reports/gap-register.md" rel="noreferrer">Gaps</a>
                 <a class="repo-link" href="https://github.com/therealjameswilson/frus-1981-88v42-assist" rel="noreferrer">Repo</a>
                 <a class="repo-link" href="https://history.state.gov/historicaldocuments/frus1981-88v42" rel="noreferrer">Volume</a>
               </div>
@@ -677,6 +868,8 @@
               
               <div class="card-footer">
                 <a class="open-link" href="https://therealjameswilson.github.io/frus-1981-88v45-assist/" rel="noreferrer">Open Page</a>
+                <a class="repo-link" href="https://therealjameswilson.github.io/frus-1981-88v45-assist/data/research.json" rel="noreferrer">Data</a>
+                <a class="repo-link" href="https://therealjameswilson.github.io/frus-1981-88v45-assist/reports/gap-register.md" rel="noreferrer">Gaps</a>
                 <a class="repo-link" href="https://github.com/therealjameswilson/frus-1981-88v45-assist" rel="noreferrer">Repo</a>
                 <a class="repo-link" href="https://history.state.gov/historicaldocuments/frus1981-88v45" rel="noreferrer">Volume</a>
               </div>
@@ -693,6 +886,8 @@
               
               <div class="card-footer">
                 <a class="open-link" href="https://therealjameswilson.github.io/frus-1989-92v01-assist/" rel="noreferrer">Open Page</a>
+                <a class="repo-link" href="https://therealjameswilson.github.io/frus-1989-92v01-assist/data/research.json" rel="noreferrer">Data</a>
+                <a class="repo-link" href="https://therealjameswilson.github.io/frus-1989-92v01-assist/reports/gap-register.md" rel="noreferrer">Gaps</a>
                 <a class="repo-link" href="https://github.com/therealjameswilson/frus-1989-92v01-assist" rel="noreferrer">Repo</a>
                 <a class="repo-link" href="https://history.state.gov/historicaldocuments/frus1989-92v01" rel="noreferrer">Volume</a>
               </div>
@@ -709,6 +904,8 @@
               <a class="companion-link" href="https://therealjameswilson.github.io/org-man-89-92/" rel="noreferrer">Organization and Management companion workbench</a>
               <div class="card-footer">
                 <a class="open-link" href="https://therealjameswilson.github.io/frus-1989-92v02-assist/" rel="noreferrer">Open Page</a>
+                <a class="repo-link" href="https://therealjameswilson.github.io/frus-1989-92v02-assist/data/research.json" rel="noreferrer">Data</a>
+                <a class="repo-link" href="https://therealjameswilson.github.io/frus-1989-92v02-assist/reports/gap-register.md" rel="noreferrer">Gaps</a>
                 <a class="repo-link" href="https://github.com/therealjameswilson/frus-1989-92v02-assist" rel="noreferrer">Repo</a>
                 <a class="repo-link" href="https://history.state.gov/historicaldocuments/frus1989-92v02" rel="noreferrer">Volume</a>
               </div>
@@ -725,6 +922,8 @@
               <a class="companion-link" href="https://therealjameswilson.github.io/89-92-RussiaFSU-Policy/" rel="noreferrer">Russia/FSU policy companion workbench</a>
               <div class="card-footer">
                 <a class="open-link" href="https://therealjameswilson.github.io/frus-1989-92v04-assist/" rel="noreferrer">Open Page</a>
+                <a class="repo-link" href="https://therealjameswilson.github.io/frus-1989-92v04-assist/data/research.json" rel="noreferrer">Data</a>
+                <a class="repo-link" href="https://therealjameswilson.github.io/frus-1989-92v04-assist/reports/gap-register.md" rel="noreferrer">Gaps</a>
                 <a class="repo-link" href="https://github.com/therealjameswilson/frus-1989-92v04-assist" rel="noreferrer">Repo</a>
                 <a class="repo-link" href="https://history.state.gov/historicaldocuments/frus1989-92v04" rel="noreferrer">Volume</a>
               </div>
@@ -741,6 +940,8 @@
               <a class="companion-link" href="https://therealjameswilson.github.io/EE-89-92/" rel="noreferrer">Eastern Europe companion workbench</a>
               <div class="card-footer">
                 <a class="open-link" href="https://therealjameswilson.github.io/frus-1989-92v05-assist/" rel="noreferrer">Open Page</a>
+                <a class="repo-link" href="https://therealjameswilson.github.io/frus-1989-92v05-assist/data/research.json" rel="noreferrer">Data</a>
+                <a class="repo-link" href="https://therealjameswilson.github.io/frus-1989-92v05-assist/reports/gap-register.md" rel="noreferrer">Gaps</a>
                 <a class="repo-link" href="https://github.com/therealjameswilson/frus-1989-92v05-assist" rel="noreferrer">Repo</a>
                 <a class="repo-link" href="https://history.state.gov/historicaldocuments/frus1989-92v05" rel="noreferrer">Volume</a>
               </div>
@@ -757,6 +958,8 @@
               <a class="companion-link" href="https://therealjameswilson.github.io/GCT-89-92/" rel="noreferrer">Eastern Mediterranean companion workbench</a>
               <div class="card-footer">
                 <a class="open-link" href="https://therealjameswilson.github.io/frus-1989-92v06-assist/" rel="noreferrer">Open Page</a>
+                <a class="repo-link" href="https://therealjameswilson.github.io/frus-1989-92v06-assist/data/research.json" rel="noreferrer">Data</a>
+                <a class="repo-link" href="https://therealjameswilson.github.io/frus-1989-92v06-assist/reports/gap-register.md" rel="noreferrer">Gaps</a>
                 <a class="repo-link" href="https://github.com/therealjameswilson/frus-1989-92v06-assist" rel="noreferrer">Repo</a>
                 <a class="repo-link" href="https://history.state.gov/historicaldocuments/frus1989-92v06" rel="noreferrer">Volume</a>
               </div>
@@ -773,6 +976,8 @@
               <a class="companion-link" href="https://therealjameswilson.github.io/Bush41-Western-Europe/" rel="noreferrer">Western Europe companion workbench</a>
               <div class="card-footer">
                 <a class="open-link" href="https://therealjameswilson.github.io/frus-1989-92v08-assist/" rel="noreferrer">Open Page</a>
+                <a class="repo-link" href="https://therealjameswilson.github.io/frus-1989-92v08-assist/data/research.json" rel="noreferrer">Data</a>
+                <a class="repo-link" href="https://therealjameswilson.github.io/frus-1989-92v08-assist/reports/gap-register.md" rel="noreferrer">Gaps</a>
                 <a class="repo-link" href="https://github.com/therealjameswilson/frus-1989-92v08-assist" rel="noreferrer">Repo</a>
                 <a class="repo-link" href="https://history.state.gov/historicaldocuments/frus1989-92v08" rel="noreferrer">Volume</a>
               </div>
@@ -789,6 +994,8 @@
               
               <div class="card-footer">
                 <a class="open-link" href="https://therealjameswilson.github.io/frus-1989-92v09-assist/" rel="noreferrer">Open Page</a>
+                <a class="repo-link" href="https://therealjameswilson.github.io/frus-1989-92v09-assist/data/research.json" rel="noreferrer">Data</a>
+                <a class="repo-link" href="https://therealjameswilson.github.io/frus-1989-92v09-assist/reports/gap-register.md" rel="noreferrer">Gaps</a>
                 <a class="repo-link" href="https://github.com/therealjameswilson/frus-1989-92v09-assist" rel="noreferrer">Repo</a>
                 <a class="repo-link" href="https://history.state.gov/historicaldocuments/frus1989-92v09" rel="noreferrer">Volume</a>
               </div>
@@ -802,9 +1009,12 @@
               <h3>Arab-Israeli Dispute</h3>
               <p class="volume-title"><span>FRUS volume title</span>Foreign Relations of the United States, 1989&ndash;1992, Volume XIV, Arab-Israeli Dispute</p>
               <p>Official Compiler Assist page for the history.state.gov volume record <strong>frus1989-92v14</strong>.</p>
+              <a class="companion-link" href="https://therealjameswilson.github.io/Bush41-MEPP/" rel="noreferrer">Arab-Israeli dispute companion workbench</a>
               
               <div class="card-footer">
                 <a class="open-link" href="https://therealjameswilson.github.io/frus-1989-92v14-assist/" rel="noreferrer">Open Page</a>
+                <a class="repo-link" href="https://therealjameswilson.github.io/frus-1989-92v14-assist/data/research.json" rel="noreferrer">Data</a>
+                <a class="repo-link" href="https://therealjameswilson.github.io/frus-1989-92v14-assist/reports/gap-register.md" rel="noreferrer">Gaps</a>
                 <a class="repo-link" href="https://github.com/therealjameswilson/frus-1989-92v14-assist" rel="noreferrer">Repo</a>
                 <a class="repo-link" href="https://history.state.gov/historicaldocuments/frus1989-92v14" rel="noreferrer">Volume</a>
               </div>
@@ -821,6 +1031,8 @@
               <a class="companion-link" href="https://therealjameswilson.github.io/Bush41-SouthAsia/" rel="noreferrer">South Asia companion workbench</a>
               <div class="card-footer">
                 <a class="open-link" href="https://therealjameswilson.github.io/frus-1989-92v15-assist/" rel="noreferrer">Open Page</a>
+                <a class="repo-link" href="https://therealjameswilson.github.io/frus-1989-92v15-assist/data/research.json" rel="noreferrer">Data</a>
+                <a class="repo-link" href="https://therealjameswilson.github.io/frus-1989-92v15-assist/reports/gap-register.md" rel="noreferrer">Gaps</a>
                 <a class="repo-link" href="https://github.com/therealjameswilson/frus-1989-92v15-assist" rel="noreferrer">Repo</a>
                 <a class="repo-link" href="https://history.state.gov/historicaldocuments/frus1989-92v15" rel="noreferrer">Volume</a>
               </div>
@@ -837,6 +1049,8 @@
               
               <div class="card-footer">
                 <a class="open-link" href="https://therealjameswilson.github.io/frus-1989-92v16-assist/" rel="noreferrer">Open Page</a>
+                <a class="repo-link" href="https://therealjameswilson.github.io/frus-1989-92v16-assist/data/research.json" rel="noreferrer">Data</a>
+                <a class="repo-link" href="https://therealjameswilson.github.io/frus-1989-92v16-assist/reports/gap-register.md" rel="noreferrer">Gaps</a>
                 <a class="repo-link" href="https://github.com/therealjameswilson/frus-1989-92v16-assist" rel="noreferrer">Repo</a>
                 <a class="repo-link" href="https://history.state.gov/historicaldocuments/frus1989-92v16" rel="noreferrer">Volume</a>
               </div>
@@ -853,6 +1067,8 @@
               
               <div class="card-footer">
                 <a class="open-link" href="https://therealjameswilson.github.io/frus-1989-92v18-assist/" rel="noreferrer">Open Page</a>
+                <a class="repo-link" href="https://therealjameswilson.github.io/frus-1989-92v18-assist/data/research.json" rel="noreferrer">Data</a>
+                <a class="repo-link" href="https://therealjameswilson.github.io/frus-1989-92v18-assist/reports/gap-register.md" rel="noreferrer">Gaps</a>
                 <a class="repo-link" href="https://github.com/therealjameswilson/frus-1989-92v18-assist" rel="noreferrer">Repo</a>
                 <a class="repo-link" href="https://history.state.gov/historicaldocuments/frus1989-92v18" rel="noreferrer">Volume</a>
               </div>
@@ -869,6 +1085,8 @@
               <a class="companion-link" href="https://therealjameswilson.github.io/NorthAfrica-89-92/" rel="noreferrer">Africa companion workbench</a>
               <div class="card-footer">
                 <a class="open-link" href="https://therealjameswilson.github.io/frus-1989-92v20-assist/" rel="noreferrer">Open Page</a>
+                <a class="repo-link" href="https://therealjameswilson.github.io/frus-1989-92v20-assist/data/research.json" rel="noreferrer">Data</a>
+                <a class="repo-link" href="https://therealjameswilson.github.io/frus-1989-92v20-assist/reports/gap-register.md" rel="noreferrer">Gaps</a>
                 <a class="repo-link" href="https://github.com/therealjameswilson/frus-1989-92v20-assist" rel="noreferrer">Repo</a>
                 <a class="repo-link" href="https://history.state.gov/historicaldocuments/frus1989-92v20" rel="noreferrer">Volume</a>
               </div>
@@ -885,6 +1103,8 @@
               
               <div class="card-footer">
                 <a class="open-link" href="https://therealjameswilson.github.io/frus-1989-92v22-assist/" rel="noreferrer">Open Page</a>
+                <a class="repo-link" href="https://therealjameswilson.github.io/frus-1989-92v22-assist/data/research.json" rel="noreferrer">Data</a>
+                <a class="repo-link" href="https://therealjameswilson.github.io/frus-1989-92v22-assist/reports/gap-register.md" rel="noreferrer">Gaps</a>
                 <a class="repo-link" href="https://github.com/therealjameswilson/frus-1989-92v22-assist" rel="noreferrer">Repo</a>
                 <a class="repo-link" href="https://history.state.gov/historicaldocuments/frus1989-92v22" rel="noreferrer">Volume</a>
               </div>
@@ -901,6 +1121,8 @@
               
               <div class="card-footer">
                 <a class="open-link" href="https://therealjameswilson.github.io/frus-1989-92v23-assist/" rel="noreferrer">Open Page</a>
+                <a class="repo-link" href="https://therealjameswilson.github.io/frus-1989-92v23-assist/data/research.json" rel="noreferrer">Data</a>
+                <a class="repo-link" href="https://therealjameswilson.github.io/frus-1989-92v23-assist/reports/gap-register.md" rel="noreferrer">Gaps</a>
                 <a class="repo-link" href="https://github.com/therealjameswilson/frus-1989-92v23-assist" rel="noreferrer">Repo</a>
                 <a class="repo-link" href="https://history.state.gov/historicaldocuments/frus1989-92v23" rel="noreferrer">Volume</a>
               </div>
@@ -917,6 +1139,8 @@
               
               <div class="card-footer">
                 <a class="open-link" href="https://therealjameswilson.github.io/frus-1989-92v24-assist/" rel="noreferrer">Open Page</a>
+                <a class="repo-link" href="https://therealjameswilson.github.io/frus-1989-92v24-assist/data/research.json" rel="noreferrer">Data</a>
+                <a class="repo-link" href="https://therealjameswilson.github.io/frus-1989-92v24-assist/reports/gap-register.md" rel="noreferrer">Gaps</a>
                 <a class="repo-link" href="https://github.com/therealjameswilson/frus-1989-92v24-assist" rel="noreferrer">Repo</a>
                 <a class="repo-link" href="https://history.state.gov/historicaldocuments/frus1989-92v24" rel="noreferrer">Volume</a>
               </div>
@@ -933,6 +1157,8 @@
               <a class="companion-link" href="https://therealjameswilson.github.io/Bush41-LatAm/" rel="noreferrer">South America companion workbench</a>
               <div class="card-footer">
                 <a class="open-link" href="https://therealjameswilson.github.io/frus-1989-92v25-assist/" rel="noreferrer">Open Page</a>
+                <a class="repo-link" href="https://therealjameswilson.github.io/frus-1989-92v25-assist/data/research.json" rel="noreferrer">Data</a>
+                <a class="repo-link" href="https://therealjameswilson.github.io/frus-1989-92v25-assist/reports/gap-register.md" rel="noreferrer">Gaps</a>
                 <a class="repo-link" href="https://github.com/therealjameswilson/frus-1989-92v25-assist" rel="noreferrer">Repo</a>
                 <a class="repo-link" href="https://history.state.gov/historicaldocuments/frus1989-92v25" rel="noreferrer">Volume</a>
               </div>
@@ -949,6 +1175,8 @@
               
               <div class="card-footer">
                 <a class="open-link" href="https://therealjameswilson.github.io/frus-1989-92v27-assist/" rel="noreferrer">Open Page</a>
+                <a class="repo-link" href="https://therealjameswilson.github.io/frus-1989-92v27-assist/data/research.json" rel="noreferrer">Data</a>
+                <a class="repo-link" href="https://therealjameswilson.github.io/frus-1989-92v27-assist/reports/gap-register.md" rel="noreferrer">Gaps</a>
                 <a class="repo-link" href="https://github.com/therealjameswilson/frus-1989-92v27-assist" rel="noreferrer">Repo</a>
                 <a class="repo-link" href="https://history.state.gov/historicaldocuments/frus1989-92v27" rel="noreferrer">Volume</a>
               </div>
@@ -965,6 +1193,8 @@
               
               <div class="card-footer">
                 <a class="open-link" href="https://therealjameswilson.github.io/frus-1989-92v30-assist/" rel="noreferrer">Open Page</a>
+                <a class="repo-link" href="https://therealjameswilson.github.io/frus-1989-92v30-assist/data/research.json" rel="noreferrer">Data</a>
+                <a class="repo-link" href="https://therealjameswilson.github.io/frus-1989-92v30-assist/reports/gap-register.md" rel="noreferrer">Gaps</a>
                 <a class="repo-link" href="https://github.com/therealjameswilson/frus-1989-92v30-assist" rel="noreferrer">Repo</a>
                 <a class="repo-link" href="https://history.state.gov/historicaldocuments/frus1989-92v30" rel="noreferrer">Volume</a>
               </div>
@@ -981,6 +1211,8 @@
               
               <div class="card-footer">
                 <a class="open-link" href="https://therealjameswilson.github.io/frus-1989-92v32-assist/" rel="noreferrer">Open Page</a>
+                <a class="repo-link" href="https://therealjameswilson.github.io/frus-1989-92v32-assist/data/research.json" rel="noreferrer">Data</a>
+                <a class="repo-link" href="https://therealjameswilson.github.io/frus-1989-92v32-assist/reports/gap-register.md" rel="noreferrer">Gaps</a>
                 <a class="repo-link" href="https://github.com/therealjameswilson/frus-1989-92v32-assist" rel="noreferrer">Repo</a>
                 <a class="repo-link" href="https://history.state.gov/historicaldocuments/frus1989-92v32" rel="noreferrer">Volume</a>
               </div>
@@ -997,6 +1229,8 @@
               <a class="companion-link" href="https://therealjameswilson.github.io/Clinton-Foundations/" rel="noreferrer">Foundations companion workbench</a>
               <div class="card-footer">
                 <a class="open-link" href="https://therealjameswilson.github.io/frus-1993-00v01-assist/" rel="noreferrer">Open Page</a>
+                <a class="repo-link" href="https://therealjameswilson.github.io/frus-1993-00v01-assist/data/research.json" rel="noreferrer">Data</a>
+                <a class="repo-link" href="https://therealjameswilson.github.io/frus-1993-00v01-assist/reports/gap-register.md" rel="noreferrer">Gaps</a>
                 <a class="repo-link" href="https://github.com/therealjameswilson/frus-1993-00v01-assist" rel="noreferrer">Repo</a>
                 <a class="repo-link" href="https://history.state.gov/historicaldocuments/frus1993-00v01" rel="noreferrer">Volume</a>
               </div>
@@ -1013,6 +1247,8 @@
               
               <div class="card-footer">
                 <a class="open-link" href="https://therealjameswilson.github.io/frus-1993-00v04-assist/" rel="noreferrer">Open Page</a>
+                <a class="repo-link" href="https://therealjameswilson.github.io/frus-1993-00v04-assist/data/research.json" rel="noreferrer">Data</a>
+                <a class="repo-link" href="https://therealjameswilson.github.io/frus-1993-00v04-assist/reports/gap-register.md" rel="noreferrer">Gaps</a>
                 <a class="repo-link" href="https://github.com/therealjameswilson/frus-1993-00v04-assist" rel="noreferrer">Repo</a>
                 <a class="repo-link" href="https://history.state.gov/historicaldocuments/frus1993-00v04" rel="noreferrer">Volume</a>
               </div>
@@ -1029,6 +1265,8 @@
               <a class="companion-link" href="https://therealjameswilson.github.io/Balkans-93-95/" rel="noreferrer">Balkans companion workbench</a>
               <div class="card-footer">
                 <a class="open-link" href="https://therealjameswilson.github.io/frus-1993-00v15-assist/" rel="noreferrer">Open Page</a>
+                <a class="repo-link" href="https://therealjameswilson.github.io/frus-1993-00v15-assist/data/research.json" rel="noreferrer">Data</a>
+                <a class="repo-link" href="https://therealjameswilson.github.io/frus-1993-00v15-assist/reports/gap-register.md" rel="noreferrer">Gaps</a>
                 <a class="repo-link" href="https://github.com/therealjameswilson/frus-1993-00v15-assist" rel="noreferrer">Repo</a>
                 <a class="repo-link" href="https://history.state.gov/historicaldocuments/frus1993-00v15" rel="noreferrer">Volume</a>
               </div>
@@ -1045,6 +1283,8 @@
               
               <div class="card-footer">
                 <a class="open-link" href="https://therealjameswilson.github.io/frus-1993-00v20-assist/" rel="noreferrer">Open Page</a>
+                <a class="repo-link" href="https://therealjameswilson.github.io/frus-1993-00v20-assist/data/research.json" rel="noreferrer">Data</a>
+                <a class="repo-link" href="https://therealjameswilson.github.io/frus-1993-00v20-assist/reports/gap-register.md" rel="noreferrer">Gaps</a>
                 <a class="repo-link" href="https://github.com/therealjameswilson/frus-1993-00v20-assist" rel="noreferrer">Repo</a>
                 <a class="repo-link" href="https://history.state.gov/historicaldocuments/frus1993-00v20" rel="noreferrer">Volume</a>
               </div>
@@ -1061,6 +1301,8 @@
               <a class="companion-link" href="https://therealjameswilson.github.io/Clinton-Europe/" rel="noreferrer">Europe companion workbench</a>
               <div class="card-footer">
                 <a class="open-link" href="https://therealjameswilson.github.io/frus-1993-00v22-assist/" rel="noreferrer">Open Page</a>
+                <a class="repo-link" href="https://therealjameswilson.github.io/frus-1993-00v22-assist/data/research.json" rel="noreferrer">Data</a>
+                <a class="repo-link" href="https://therealjameswilson.github.io/frus-1993-00v22-assist/reports/gap-register.md" rel="noreferrer">Gaps</a>
                 <a class="repo-link" href="https://github.com/therealjameswilson/frus-1993-00v22-assist" rel="noreferrer">Repo</a>
                 <a class="repo-link" href="https://history.state.gov/historicaldocuments/frus1993-00v22" rel="noreferrer">Volume</a>
               </div>
@@ -1077,6 +1319,8 @@
               <a class="companion-link" href="https://therealjameswilson.github.io/Clinton-Europe/" rel="noreferrer">Europe companion workbench</a>
               <div class="card-footer">
                 <a class="open-link" href="https://therealjameswilson.github.io/frus-1993-00v24-assist/" rel="noreferrer">Open Page</a>
+                <a class="repo-link" href="https://therealjameswilson.github.io/frus-1993-00v24-assist/data/research.json" rel="noreferrer">Data</a>
+                <a class="repo-link" href="https://therealjameswilson.github.io/frus-1993-00v24-assist/reports/gap-register.md" rel="noreferrer">Gaps</a>
                 <a class="repo-link" href="https://github.com/therealjameswilson/frus-1993-00v24-assist" rel="noreferrer">Repo</a>
                 <a class="repo-link" href="https://history.state.gov/historicaldocuments/frus1993-00v24" rel="noreferrer">Volume</a>
               </div>
@@ -1093,6 +1337,8 @@
               
               <div class="card-footer">
                 <a class="open-link" href="https://therealjameswilson.github.io/frus-1993-00v25-assist/" rel="noreferrer">Open Page</a>
+                <a class="repo-link" href="https://therealjameswilson.github.io/frus-1993-00v25-assist/data/research.json" rel="noreferrer">Data</a>
+                <a class="repo-link" href="https://therealjameswilson.github.io/frus-1993-00v25-assist/reports/gap-register.md" rel="noreferrer">Gaps</a>
                 <a class="repo-link" href="https://github.com/therealjameswilson/frus-1993-00v25-assist" rel="noreferrer">Repo</a>
                 <a class="repo-link" href="https://history.state.gov/historicaldocuments/frus1993-00v25" rel="noreferrer">Volume</a>
               </div>
@@ -1109,6 +1355,8 @@
               <a class="companion-link" href="https://therealjameswilson.github.io/Clinton-South-and-Southern-Africa/" rel="noreferrer">Southern Africa companion workbench</a>
               <div class="card-footer">
                 <a class="open-link" href="https://therealjameswilson.github.io/frus-1993-00v27-assist/" rel="noreferrer">Open Page</a>
+                <a class="repo-link" href="https://therealjameswilson.github.io/frus-1993-00v27-assist/data/research.json" rel="noreferrer">Data</a>
+                <a class="repo-link" href="https://therealjameswilson.github.io/frus-1993-00v27-assist/reports/gap-register.md" rel="noreferrer">Gaps</a>
                 <a class="repo-link" href="https://github.com/therealjameswilson/frus-1993-00v27-assist" rel="noreferrer">Repo</a>
                 <a class="repo-link" href="https://history.state.gov/historicaldocuments/frus1993-00v27" rel="noreferrer">Volume</a>
               </div>
@@ -1125,6 +1373,8 @@
               
               <div class="card-footer">
                 <a class="open-link" href="https://therealjameswilson.github.io/frus-1993-00v28-assist/" rel="noreferrer">Open Page</a>
+                <a class="repo-link" href="https://therealjameswilson.github.io/frus-1993-00v28-assist/data/research.json" rel="noreferrer">Data</a>
+                <a class="repo-link" href="https://therealjameswilson.github.io/frus-1993-00v28-assist/reports/gap-register.md" rel="noreferrer">Gaps</a>
                 <a class="repo-link" href="https://github.com/therealjameswilson/frus-1993-00v28-assist" rel="noreferrer">Repo</a>
                 <a class="repo-link" href="https://history.state.gov/historicaldocuments/frus1993-00v28" rel="noreferrer">Volume</a>
               </div>
@@ -1141,6 +1391,8 @@
               <a class="companion-link" href="https://therealjameswilson.github.io/Clinton-CentralAmerica/" rel="noreferrer">Central America companion workbench</a>
               <div class="card-footer">
                 <a class="open-link" href="https://therealjameswilson.github.io/frus-1993-00v32-assist/" rel="noreferrer">Open Page</a>
+                <a class="repo-link" href="https://therealjameswilson.github.io/frus-1993-00v32-assist/data/research.json" rel="noreferrer">Data</a>
+                <a class="repo-link" href="https://therealjameswilson.github.io/frus-1993-00v32-assist/reports/gap-register.md" rel="noreferrer">Gaps</a>
                 <a class="repo-link" href="https://github.com/therealjameswilson/frus-1993-00v32-assist" rel="noreferrer">Repo</a>
                 <a class="repo-link" href="https://history.state.gov/historicaldocuments/frus1993-00v32" rel="noreferrer">Volume</a>
               </div>
@@ -1148,7 +1400,7 @@
           </article>
         </div>
 
-        <div class="empty" id="empty-state">No matching assist pages.</div>
+        <div class="empty" id="empty-state">No matching pages or workbenches.</div>
       </section>
     </main>
 
@@ -1161,7 +1413,9 @@
     <script>
       const searchInput = document.querySelector("#site-search");
       const cards = Array.from(document.querySelectorAll(".assist-card"));
+      const workbenchCards = Array.from(document.querySelectorAll(".workbench-card"));
       const resultCount = document.querySelector("#result-count");
+      const workbenchCount = document.querySelector("#workbench-count");
       const emptyState = document.querySelector("#empty-state");
       const filterButtons = Array.from(document.querySelectorAll(".filter-button"));
       let activeFilter = "all";
@@ -1169,6 +1423,7 @@
       function updateCards() {
         const query = searchInput.value.trim().toLowerCase();
         let visibleCount = 0;
+        let visibleWorkbenches = 0;
         for (const card of cards) {
           const eraMatch = activeFilter === "all" || card.dataset.era === activeFilter;
           const text = (card.textContent + " " + card.dataset.search).toLowerCase();
@@ -1177,8 +1432,17 @@
           card.hidden = !visible;
           if (visible) visibleCount += 1;
         }
+        for (const card of workbenchCards) {
+          const eraMatch = activeFilter === "all" || card.dataset.era === activeFilter;
+          const text = (card.textContent + " " + card.dataset.search).toLowerCase();
+          const searchMatch = query === "" || text.includes(query);
+          const visible = eraMatch && searchMatch;
+          card.hidden = !visible;
+          if (visible) visibleWorkbenches += 1;
+        }
         resultCount.textContent = String(visibleCount);
-        emptyState.classList.toggle("visible", visibleCount === 0);
+        workbenchCount.textContent = String(visibleWorkbenches);
+        emptyState.classList.toggle("visible", visibleCount + visibleWorkbenches === 0);
       }
 
       searchInput.addEventListener("input", updateCards);
