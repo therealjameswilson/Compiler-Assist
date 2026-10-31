@@ -1,0 +1,46 @@
+{
+  "checkedAt": "2026-10-31",
+  "purpose": "Complete canonical citation resources made accessible from compiler assists; no blanket document-to-folder crosswalk is asserted.",
+  "sources": [
+    {
+      "id": "bush",
+      "title": "Bush 41 presidential-record source notes",
+      "publicUrl": "https://therealjameswilson.github.io/bush41-nsc-source-notes/",
+      "repository": "therealjameswilson/bush41-nsc-source-notes",
+      "commit": "906ad0642ad6a87c07744ade84965bd95dda3065",
+      "path": "data/entries.min.json",
+      "gitBlob": "71001348b6e3a267bd120dcf48c77b401f6ab937",
+      "sha256": "9c9d448aecb94fad4e65dddd8de46ce6e729d9d2cea288569a8aaa66358f1fa8",
+      "bytes": 47642225,
+      "generatedAt": "2026-07-02T16:42:11Z",
+      "rows": 70432,
+      "types": { "folder": 70398, "catalogItem": 13, "series": 21 },
+      "coverageNote": "The checked canonical input includes 1,733 Cheney Collection entries absent from an earlier public deployment of 68,699 entries. Counts here identify the canonical input, not a claim that every entry is a verified item-level FRUS citation."
+    },
+    {
+      "id": "clinton",
+      "title": "Clinton 2013-0185-M finding-aid source notes",
+      "publicUrl": "https://therealjameswilson.github.io/clinton-2013-0185-source-notes/",
+      "repository": "therealjameswilson/clinton-2013-0185-source-notes",
+      "commit": "512bc2e1857d81230e9a92e05707d54f9908a40a",
+      "path": "data/entries.min.json",
+      "gitBlob": "2582e39454a1182dfaa2b482ba527228cc6af8d4",
+      "sha256": "eaa4ae0db6607aa94af9c6180e03c95c5dc6e69370cbc64a48ab66ee1c118ead",
+      "bytes": 33511494,
+      "generatedAt": "2026-07-07T19:54:35+00:00",
+      "rows": 42413,
+      "uniqueNoteStrings": 42127,
+      "repeatedNoteRows": 286,
+      "flaggedRows": 6258,
+      "illegibleOfficeRows": 220,
+      "assertedFileUnitNaids": 0,
+      "coverageNote": "Repeated note strings remain distinct finding-aid rows. Exact OA/ID alone does not establish a record match; collection or office-level NAIDs are not file-unit identifiers."
+    }
+  ],
+  "citationPolicy": [
+    "Copy only the plain Source: line; display citation level, review flags and provenance separately.",
+    "Folder/series stems and catalog-item leads do not establish final document citations.",
+    "Preserve stronger existing item citations and State Department FOIA provenance.",
+    "Original classification is distinct from current availability or release status."
+  ]
+}
