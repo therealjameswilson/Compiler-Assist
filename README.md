@@ -16,7 +16,7 @@ Published target:
 - 37 official-order FRUS Assist links for every volume listed as Being Researched on history.state.gov as of June 1, 2026
 - direct links to each volume's research dataset and gap register
 - 23 companion workbench links for richer existing research pages, including the public Clinton NATO expansion document package
-- Research and compilation tools: Strobe Talbott FOIA Manifest, NARA Scout, the searchable October 30, 2026 State FOIA release index, and the George H. W. Bush Presidential Daily File catalog
+- Research and compilation tools: Strobe Talbott FOIA Manifest, NARA Scout, the searchable October 30, 2026 State FOIA release index, and the GHWB Presidential Daily File (1989–1993), a chronological catalog curated from linked public posts
 - A Citation Notes navigation link for the Clinton and Bush 41 finding-aid helpers; their folder/series matches are leads, not document-level citations
 
 Each volume card uses the actual history.state.gov title and links to:
