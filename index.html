@@ -522,7 +522,7 @@
         <div class="nav-links">
           <a href="#directory">Directory</a>
           <a href="#workbenches">Workbenches</a>
-          <a href="#support">Research Support</a>
+          <a href="#support">Research Tools</a><a href="#citation-resources">Citation Notes</a>
           <a href="https://history.state.gov/historicaldocuments/status-of-the-series" rel="noreferrer">Status</a>
           <a href="https://github.com/therealjameswilson/Compiler-Assist" rel="noreferrer">GitHub</a>
         </div>
@@ -535,15 +535,15 @@
           <p class="kicker">FRUS Being Researched volumes</p>
           <h1>Compiler Assist</h1>
           <p class="hero-copy">
-            Official-order FRUS Assist pages for every volume currently listed as Being Researched on history.state.gov, with support links for source scouting and FOIA manifest work.
+            Official-order FRUS Assist pages from the checked history.state.gov status snapshot, with tools for source discovery, release review, and citation research.
           </p>
           <p class="sync-note">Verified June 1, 2026 against the Office of the Historian Status of the Series page. Daily drift checks run in GitHub Actions.</p>
           <div class="stats" aria-label="Directory summary">
             <div class="stat"><strong>37</strong><span>researched volumes</span></div>
             <div class="stat"><strong>37</strong><span>research datasets</span></div>
             <div class="stat"><strong>37</strong><span>gap registers</span></div>
-            <div class="stat"><strong>22</strong><span>companion workbenches</span></div>
-            <div class="stat"><strong>2</strong><span>support tools</span></div>
+            <div class="stat"><strong>23</strong><span>companion workbenches</span></div>
+            <div class="stat"><strong>4</strong><span>research tools</span></div>
           </div>
         </div>
       </section>
@@ -567,7 +567,7 @@
         </div>
 
         <section class="support-tools" id="support" aria-labelledby="support-title">
-          <h2 id="support-title">Research Support</h2>
+          <h2 id="support-title">Research and Compilation Tools</h2>
           <div class="tool-grid">
             <article class="tool-card">
               <div class="tags"><span class="tag">Support</span><span class="tag live">Live</span></div>
@@ -581,15 +581,33 @@
               <p>A reconnaissance tool for FRUS compilers searching NARA records, withdrawal sheets, and unprocessed collections.</p>
               <a class="open-link" href="https://therealjameswilson.github.io/nara-scout/" rel="noreferrer">Open NARA Scout</a>
             </article>
+            <article class="tool-card">
+              <div class="tags"><span class="tag">Bush 41</span><span class="tag live">Research catalog</span></div>
+              <h3>Presidential Daily File Catalog</h3>
+              <p>Browse the George H. W. Bush Presidential Library Daily File catalog for contemporaneous records. Use archival item descriptions to locate records; this catalog is not a FRUS citation generator.</p>
+              <a class="open-link" href="https://therealjameswilson.github.io/ghwb-presidential-daily-file/" rel="noreferrer">Open Daily File Catalog</a>
+            </article>
+            <article class="tool-card">
+              <div class="tags"><span class="tag">State FOIA</span><span class="tag live">Release text</span></div>
+              <h3>October 30, 2026 State FOIA Release</h3>
+              <p>Search the 1,435-record release index and extracted document text. Open the official State PDF for citation; release posting date is separate from historical document date.</p>
+              <a class="open-link" href="https://october-30-2026-document-release.jagwilson.chatgpt.site" rel="noreferrer">Open Release Index</a>
+            </article>
           </div>
         </section>
 
         <section class="workbench-section" id="workbenches" aria-labelledby="workbench-title">
           <div class="section-heading">
             <h2 id="workbench-title">Companion Workbenches</h2>
-            <p><span id="workbench-count">22</span> shown</p>
+            <p><span id="workbench-count">23</span> shown</p>
           </div>
           <div class="workbench-grid" id="workbench-grid">
+            <article class="workbench-card" data-era="1993-2000" data-search="1993-2000 clinton nato expansion alliance enlargement bernstein document package source audit">
+              <div class="tags"><span class="tag">1993-2000</span><span class="tag live">Special-topic package</span></div>
+              <h3>Clinton NATO Expansion Documents</h3>
+              <p>Curated Clinton-era NATO expansion document package with a Bernstein handoff, source-exhaustion audit, package manifest, and NSC priority queue.</p>
+              <a class="open-link" href="https://therealjameswilson.github.io/Clinton-NATO-Expansion-Documents/" rel="noreferrer">Open NATO Package</a>
+            </article>
             <article class="workbench-card" data-era="1981-1988" data-search="1981-1988 volume xxxvii trade monetary policy industrialized country cooperation fep foreign economic policy">
               <div class="tags"><span class="tag">1981-1988</span><span class="tag live">Live</span></div>
               <h3>FEP 1985-1988</h3>
@@ -1456,7 +1474,7 @@
         });
       }
     </script>
-  <section data-presidential-citations data-citation-era="both" aria-label="Presidential-record citation resources">
+  <section id="citation-resources" data-presidential-citations data-citation-era="both" aria-label="Presidential-record citation resources">
   <h2>Presidential-record citation resources</h2>
   <p>Search and copy source-note stems. Folder and series matches are not verified document citations; preserve stronger item citations and State Department FOIA provenance.</p>
   <p><a href="https://therealjameswilson.github.io/bush41-nsc-source-notes/">Bush 41: 70,432 canonical entries</a> · <a href="https://therealjameswilson.github.io/clinton-2013-0185-source-notes/">Clinton: 42,413 finding-aid rows</a></p>
